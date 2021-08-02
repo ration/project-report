@@ -1,0 +1,71 @@
+* Project report
+
+This generates a report of given repositories, such as used languages and dependencies. Most of the heavy lifting is done via [[https://github.com/github/linguist/][Linguist]] (language stats) and [[https://github.com/librariesio/bibliothecary/][Bibliothecary]] (package manager stats).
+
+* Report
+
+The report generated should like the following:
+
+#+begin_src yaml
+project:
+  name: My Awesome Project
+  repos:
+    - path: "/tmp/repo-path/"
+      languages:
+        Kotlin: 249754
+        Typescript: 215432
+      subprojects:
+      - platform: npm
+        path: "/tmp/repo-path/front/package.json"
+        dependencies:
+          - name: clsx
+            requirement: "^1.1.1"
+            type: runtime
+          - name: gulp-data
+            requirement: "^1.3.1"
+      - platform: maven
+        path: "/tmp/repo-path/android-app/build.gradle"
+        dependencies:
+          - name: org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version
+            requirement: ''
+            type: implementation
+          - name: com.android.tools:desugar_jdk_libs
+            requirement: 1.1.5
+            type: coreLibraryDesugaring
+  #+end_src
+
+
+
+* Installing
+
+You can use bundler to install all the required dependencies.
+
+#+begin_src shell
+bundler install
+#+end_src
+
+* Running
+
+Use /./project-report.rb --help/ to see options and examples.
+
+* Docker
+
+If you don't have Ruby installed, you can run this from Docker.
+
+Build the docker image:
+#+begin_src shell
+docker build -t project-report .
+#+end_src
+
+
+For example scan to repositories:
+#+begin_src shell
+# Scan REPOS
+REPO1=/path/to/first-own-local-computer
+REPO2=/path/to-second/first-own-local-computer
+docker run -i --rm -v $REPO1:$REPO1 -v $REPO2:$REPO2 -w $(pwd) -t project-report:latest "/project-report.rb" -n"My Awesome project" -r$REPO1,$REPO2
+#+end_src
+
+* Dependencies
+
+
