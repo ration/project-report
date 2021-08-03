@@ -1,6 +1,6 @@
 * Project report
 
-This generates a report of given repositories, such as used languages and dependencies. Most of the heavy lifting is done via [[https://github.com/github/linguist/][Linguist]] (language stats) and [[https://github.com/librariesio/bibliothecary/][Bibliothecary]] (package manager stats).
+This generates a report of given repositories, such as used languages, row counts and used packages. Most of the heavy lifting is done via [[https://github.com/github/linguist/][Linguist]] (language stats) and [[https://github.com/librariesio/bibliothecary/][Bibliothecary]] (package manager stats).
 
 * Report
 
