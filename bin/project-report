@@ -110,5 +110,5 @@ project = {
 if options[:output]
   File.write(options[:output], project.to_yaml)
 else
-  puts(project.to_yaml(indentation: 10))
+  puts(project.to_yaml)
 end
