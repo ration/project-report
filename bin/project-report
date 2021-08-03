@@ -11,9 +11,9 @@ def parse_options
   }
   OptionParser.new do |opts|
     opts.banner = "Generate statistics about project, such as used languages, row counts and dependencies.
-  Usage: project-report.rb [options] -r<paths to git repository in local directory>
+  Usage: project-report [options] -r<paths to git repository in local directory>
 
-  Example: ./project-report.rb -r . -n\"Project Report\" --business=\"Open Source\"
+  Example: ./project-report -r . -n\"Project Report\" --business=\"Open Source\"
 
   Options:
 "
