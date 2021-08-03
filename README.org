@@ -9,6 +9,7 @@ The report generated should like the following:
 #+begin_src yaml
 project:
   name: My Awesome Project
+  business: Open Source, Reporting
   repos:
     - path: "/tmp/repo-path/"
       languages:
