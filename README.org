@@ -47,7 +47,7 @@ You can install this from rubygems:
 gem install project-report
 #+end_src
 
-Use /bin/project-report --help/ to see options and examples.
+Use /project-report --help/ to see options and examples.
 
 
 * Developing 
