@@ -47,6 +47,42 @@ You can install this from rubygems:
 gem install project-report
 #+end_src
 
+Example report for this repository:
+#+begin_src shell
+project-report -n"Project Report" -b "OSS, Reporting" -r .
+#+end_src
+
+Produces:
+#+begin_src yaml
+project:
+  name: Project Report
+  business: OSS, Reporting
+  repos:
+  - path: "."
+    languages:
+      Dockerfile: 227
+      Ruby: 4025
+    subprojects:
+    - platform: rubygems
+      path: Gemfile
+      dependencies:
+      - name: github-linguist
+        type: runtime
+        requirement: ">= 0"
+      - name: bibliothecary
+        type: runtime
+        requirement: ">= 0"
+    - platform: rubygems
+      path: project-report.gemspec
+      dependencies:
+      - name: github-linguist
+        type: runtime
+        requirement: "= 7.16.0"
+      - name: bibliothecary
+        type: runtime
+        requirement: "= 7.0.2"
+#+end_src
+
 Use /project-report --help/ to see options and examples.
 
 
