@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "project-report"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
   s.summary = "Generate language statistics and dependency report for projects"
   s.description = "Generate language statistics and dependency report for projects.
 Shows used languages with row counts, used package managers and dependenccies."

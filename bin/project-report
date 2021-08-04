@@ -7,13 +7,13 @@ require 'bibliothecary'
 def parse_options
   ARGV.push('-h') if ARGV.empty?
   options = { :name => "",
-              :business => "",
+              :tags => "",
   }
   OptionParser.new do |opts|
     opts.banner = "Generate statistics about project, such as used languages, row counts and dependencies.
   Usage: project-report [options] -r<paths to git repository in local directory>
 
-  Example: ./project-report -r . -n\"Project Report\" --business=\"Open Source\"
+  Example: ./project-report -r . -n\"Project Report\" --tags=\"OSS,Reporting\"
 
   Options:
 "
@@ -24,8 +24,8 @@ def parse_options
     opts.on("-nNAME", "--project-name=NAME", "Project name, will be prompted if not set") do |name|
       options[:name] = name
     end
-    opts.on("-bBUSINESS", "--business=BUSINESS", "Project business area, will be prompted if not set") do |business|
-      options[:business] = business
+    opts.on("-tTAGS", "--tags=TAGS", Array, "Tags for project. This can be things as business area, open source etc... Will be prompted if not set") do |tags|
+      options[:tags] = tags
     end
     opts.on("-h", "--help", "Show this message") do
       puts opts
@@ -94,16 +94,16 @@ if options[:name] == ""
   print "Project name? "
   options[:name] = STDIN.gets.strip
 end
-if options[:business] == ""
-  print "Project business area (e.g. ecommerce, banking, etc..)? "
-  options[:business] = STDIN.gets.strip
+if options[:tags] == ""
+  print "Project tags (e.g. ecommerce, banking, etc..)? "
+  options[:tags] = STDIN.gets.strip.split(",").map(&:strip)
 end
 
 # Generate end result
 project = {
   "project" => {
     "name" => options[:name],
-    "business" => options[:business],
+    "tags" => options[:tags],
     "repos" => options[:repos].map{ |repo| repo_stats(repo)}
   }
 }
