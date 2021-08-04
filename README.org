@@ -114,6 +114,5 @@ REPO2=/path/to-second/first-own-local-computer
 docker run -i --rm -v $REPO1:$REPO1 -v $REPO2:$REPO2 -w $(pwd) -t project-report:latest "/project-report" -n"My Awesome project" -r$REPO1,$REPO2
 #+end_src
 
-* Dependencies
 
 
